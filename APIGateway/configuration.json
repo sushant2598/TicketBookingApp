@@ -1,0 +1,344 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/User/register",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44398
+        }
+      ],
+      "UpstreamPathTemplate": "/register",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/User/login",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44398
+        }
+      ],
+      "UpstreamPathTemplate": "/login",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/User/update",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44398
+        }
+      ],
+      "UpstreamPathTemplate": "/updateuser",
+      "UpstreamHttpMethod": [ "Put" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "CUSTOMER"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/User/updaterole",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44398
+        }
+      ],
+      "UpstreamPathTemplate": "/updaterole",
+      "UpstreamHttpMethod": [ "Put" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/User/getuser",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44398
+        }
+      ],
+      "UpstreamPathTemplate": "/getusers",
+      "UpstreamHttpMethod": [ "Get" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Movies",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44345
+        }
+      ],
+      "UpstreamPathTemplate": "/getmovies",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Movies/{imdbId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44345
+        }
+      ],
+      "UpstreamPathTemplate": "/getmovies/{imdbId}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Movies/{movieName}/{year}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44345
+        }
+      ],
+      "UpstreamPathTemplate": "/findmovie/{movieName}/{year}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Movies/{movieName}/{year}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44345
+        }
+      ],
+      "UpstreamPathTemplate": "/addmovie/{movieName}/{year}",
+      "UpstreamHttpMethod": [ "Post" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Movies/{imdbId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44345
+        }
+      ],
+      "UpstreamPathTemplate": "/deletemovie/{imdbId}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Movies/{imdbId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44345
+        }
+      ],
+      "UpstreamPathTemplate": "/updatemovie/{imdbId}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Theatre",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44301
+        }
+      ],
+      "UpstreamPathTemplate": "/gettheatre",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Theatre/{imdbId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44301
+        }
+      ],
+      "UpstreamPathTemplate": "/theatreimdbid/{imdbId}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Theatre",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44301
+        }
+      ],
+      "UpstreamPathTemplate": "/addtheatre",
+      "UpstreamHttpMethod": [ "Post" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Theatre/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44301
+        }
+      ],
+      "UpstreamPathTemplate": "/updatetheatre/{id}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Theatre/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44301
+        }
+      ],
+      "UpstreamPathTemplate": "/deletetheatre/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Ticket/book",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44316
+        }
+      ],
+      "UpstreamPathTemplate": "/bookticket",
+      "UpstreamHttpMethod": [ "Post" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN,CUSTOMER"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Ticket/cancel/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44316
+        }
+      ],
+      "UpstreamPathTemplate": "/cancelticket/{id}",
+      "UpstreamHttpMethod": [ "Post" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN,CUSTOMER"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Ticket/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44316
+        }
+      ],
+      "UpstreamPathTemplate": "/getticket/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN,CUSTOMER"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Ticket/{username}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44316
+        }
+      ],
+      "UpstreamPathTemplate": "/getticketbyusername/{username}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "RouteClaimsRequirement": {
+        "UserRole": "ADMIN,CUSTOMER"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+  }
+}

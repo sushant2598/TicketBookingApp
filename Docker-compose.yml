@@ -1,0 +1,67 @@
+version: '3.5'
+services:
+  apigateway:
+    image: apigateway
+    ports:
+      - "5000:80"
+    container_name: API-Gateway
+
+  movieservice:
+    image: movieservice
+    ports:
+      - "5001:80"
+    environment:
+      Mongo_DB: "mongodb://db:27017"
+      DB_NAME: "MoviesDB"
+    container_name: movie-service
+    depends_on:
+      - db
+      - apigateway
+
+  theatreservice:
+    image: theatreservice
+    hostname: theatre-service
+    ports:
+      - "5002:80"
+    environment:
+      Mongo_DB: "mongodb://db:27017"
+      DB_NAME: "TheatresDB"
+    container_name: theatre-service
+    depends_on:
+      - db
+      - apigateway
+
+  ticketservice:
+    image: ticketservice
+    ports:
+      - "5003:80"
+    environment:
+      SQL_DB: "Data Source=sqlserverdb;Initial Catalog=TicketServiceDB;User Id=sa;Password=skcsushant@123"
+    container_name: ticket-service
+    depends_on:
+      - sqlserverdb
+      - apigateway
+  
+  userservice:
+    image: userservice
+    ports:
+      - "5004:80"
+    environment:
+      SQL_DB: "Data Source=sqlserverdb;Initial Catalog=UserServiceDB;User Id=sa;Password=skcsushant@123"
+    container_name: user-service
+    depends_on:
+      - sqlserverdb
+      - apigateway
+  
+  sqlserverdb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    environment:
+      - SA_PASSWORD=skcsushant@123
+      - ACCEPT_EULA=Y
+  
+  db: 
+    image: mongo
+    ports:
+      - "27017:27017"
